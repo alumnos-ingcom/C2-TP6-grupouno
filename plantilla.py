@@ -1,5 +1,7 @@
 ################
-# Martín René - @martinvilu
+# MARTIN DARRICADES Sebastián - @sebasamd
+# BOCCHIGLIERE Andrés - @AndresBochi - elmaildeandresbochi@gmail.com
+# CHECCARELLI Sergio -@checas
 # UNRN Andina - Introducción a la Ingenieria en Computación
 ################
 
@@ -13,4 +15,3 @@ def principal():
 
 if __name__ == "__main__":
     principal()
-
