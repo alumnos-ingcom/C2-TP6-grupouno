@@ -21,7 +21,7 @@ def es_anagrama(cadena1, cadena2):
     
     """
     
-    cadena1 = cadena1.replace(" ", "")
+    cadena1 = cadena1.remove(" ", "")
     cadena2 = cadena2.replace(" ", "")
     cadena1 = cadena1.lower()
     cadena2 = cadena2.lower()
