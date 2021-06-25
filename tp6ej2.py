@@ -10,21 +10,37 @@
 
 def levantar_datos():
     archivo = open('anagramas.txt', 'r', encoding='UTF-8')
-    lista_contenido = archivo.readlines()
-    archivo.close()
-    return lista_contenido
+    lista = []
+    for linea in archivo.readlines():
+        linea_sin_espacios = linea.replace(" ", "")
+        linea_sin_guion = linea_sin_espacios.replace('–', ',')
+        linea_sin_salto = linea_sin_guion.replace('\n', '')
+        final = linea_sin_salto.split(",")
+        for i in final:
+            lista.append(i)
+    print(lista)
+    archivo.close
+    return lista
 
-def lineas_a_cadenas(linea):
-    cadena1 = []
-    cadena2 = []
-    for caracter in linea:
-        while caracter != "-":
-            cadena1.append(caracter)
-            print(f"Esta estas{cadena1}")
-        if caracter == "-":
-            for caracter in linea:
-                cadena2.append(caracter)
-    print(f"Esta estas{cadena1}")
+def niidea(lista):
+    indice_movil = 0
+    indice_movil2 = 1
+    lista_promediada = []
+    largo_lista = len(lista)
+    elementos_pares = 0
+    for elemento in lista:
+        while elementos_pares < largo_lista:
+            cadena1 = lista[indice_movil]
+            cadena2 = lista[indice_movil2]
+            if es_anagrama(cadena1, cadena2):
+                print(f"\n'{cadena1}' es anagrama de '{cadena2}'")
+            else:
+                print(f"\n'{cadena1}' NO es anagrama de '{cadena2}'")
+            elementos_pares += 2
+            indice_movil += 2
+            indice_movil2 += 2
+    pass
+
 
 def dividir_cadena_en_lista(cadena):
     """
@@ -38,9 +54,6 @@ def es_anagrama(cadena1, cadena2):
     Esta función devuelve True si las cadenas pasadas como argumentos son anagramas
     
     """
-    
-    cadena1 = cadena1.remove(" ", "")
-    cadena2 = cadena2.replace(" ", "")
     cadena1 = cadena1.lower()
     cadena2 = cadena2.lower()
     cadena1 = dividir_cadena_en_lista(cadena1)
@@ -63,21 +76,8 @@ def es_anagrama(cadena1, cadena2):
 
 def principal():
     print("¿Es Anagrama?")
-#    print("\nIntroduzca una palabra o frase: ")
-#    frase1 = input()
-#    print("Introduzca una segunda palabra o frase para verificar si es anagrama de la primera: ")
-#    frase2 = input()
     datos = levantar_datos()
-    print(type(datos))
-    print(datos)
-    
-    prueba = lineas_a_cadenas("Alegan – Ángela")
-    print(prueba)
-
-#    if es_anagrama(datos):
-#        print(f"\n'{frase1}' es anagrama de '{frase2}'")
-#    else:
-#        print(f"\n'{frase1}' NO es anagrama de '{frase2}'")
+    prueba = niidea(datos)
                                         
 if __name__ == "__main__":
     principal()
