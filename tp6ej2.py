@@ -6,7 +6,25 @@
 ################
 
 # Implementar una función que determine si dos cadenas son anagramas entre si,
-# ignorando espacios y diferencias entre mayusculas y minusculas.
+# ignorando espacios y diferencias entre mayusculas y minusculas
+
+def levantar_datos():
+    archivo = open('anagramas.txt', 'r', encoding='UTF-8')
+    lista_contenido = archivo.readlines()
+    archivo.close()
+    return lista_contenido
+
+def lineas_a_cadenas(linea):
+    cadena1 = []
+    cadena2 = []
+    for caracter in linea:
+        while caracter != "-":
+            cadena1.append(caracter)
+            print(f"Esta estas{cadena1}")
+        if caracter == "-":
+            for caracter in linea:
+                cadena2.append(caracter)
+    print(f"Esta estas{cadena1}")
 
 def dividir_cadena_en_lista(cadena):
     """
@@ -45,15 +63,21 @@ def es_anagrama(cadena1, cadena2):
 
 def principal():
     print("¿Es Anagrama?")
-    print("\nIntroduzca una palabra o frase: ")
-    frase1 = input()
-    print("Introduzca una segunda palabra o frase para verificar si es anagrama de la primera: ")
-    frase2 = input()
+#    print("\nIntroduzca una palabra o frase: ")
+#    frase1 = input()
+#    print("Introduzca una segunda palabra o frase para verificar si es anagrama de la primera: ")
+#    frase2 = input()
+    datos = levantar_datos()
+    print(type(datos))
+    print(datos)
     
-    if es_anagrama(frase1, frase2):
-        print(f"\n'{frase1}' es anagrama de '{frase2}'")
-    else:
-        print(f"\n'{frase1}' NO es anagrama de '{frase2}'")
+    prueba = lineas_a_cadenas("Alegan – Ángela")
+    print(prueba)
+
+#    if es_anagrama(datos):
+#        print(f"\n'{frase1}' es anagrama de '{frase2}'")
+#    else:
+#        print(f"\n'{frase1}' NO es anagrama de '{frase2}'")
                                         
 if __name__ == "__main__":
     principal()
