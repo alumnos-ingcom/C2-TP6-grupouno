@@ -13,7 +13,8 @@ def levantar_datos():
     lista = []
     for linea in archivo.readlines():
         linea_sin_espacios = linea.replace(" ", "")
-        linea_sin_guion = linea_sin_espacios.replace('–', ',')
+        linea_sin_comas = linea_sin_espacios.replace(",", "")
+        linea_sin_guion = linea_sin_comas.replace('–', ',')
         linea_sin_salto = linea_sin_guion.replace('\n', '')
         final = linea_sin_salto.split(",")
         for i in final:
@@ -23,9 +24,10 @@ def levantar_datos():
     return lista
 
 def niidea(lista):
+    """Esta funcion toma de a dos elementos de una lista y revisa si son anagramas llamando a la otra funcion"""
     indice_movil = 0
     indice_movil2 = 1
-    lista_promediada = []
+    #Los indices sirve, para tomar de a dos items.
     largo_lista = len(lista)
     elementos_pares = 0
     for elemento in lista:
